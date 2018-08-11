@@ -1,6 +1,6 @@
 package com.imooc.myo2o.service;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 import java.util.Date;
@@ -15,18 +15,17 @@ import com.imooc.myo2o.entity.PersonInfo;
 import com.imooc.myo2o.entity.Shop;
 import com.imooc.myo2o.entity.ShopCategory;
 import com.imooc.myo2o.enums.ShopStateEnum;
-import com.imooc.myo2o.service.ShopService;
 
 /* 
  * @author yuan 
  * @version 1.0 
- * @date 2018年8月7日 上午10:06:33 
+ * @date 2018年8月11日 下午2:11:50 
  */
 
-public class ShopServiceTest extends BaseTest {
+public class ShopserviceTest extends BaseTest{
 	@Autowired
 	private ShopService shopService;
-
+	
 	@Test
 	public void testAddShop() throws Exception {
 		Shop shop = new Shop();
@@ -56,3 +55,5 @@ public class ShopServiceTest extends BaseTest {
 	}
 
 }
+
+
