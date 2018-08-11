@@ -15,6 +15,7 @@ import com.imooc.myo2o.entity.PersonInfo;
 import com.imooc.myo2o.entity.Shop;
 import com.imooc.myo2o.entity.ShopCategory;
 import com.imooc.myo2o.enums.ShopStateEnum;
+import com.imooc.myo2o.service.ShopService;
 
 /* 
  * @author yuan 
