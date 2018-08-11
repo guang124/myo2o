@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>SUI Mobile Demo</title>
+<title>商铺信息</title>
 <meta name="description"
 	content="MSUI: Build mobile apps with simple HTML, CSS, and JS components.">
 <meta name="author" content="阿里巴巴国际UED前端">
@@ -29,6 +29,8 @@
 	src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
 <script type='text/javascript'
 	src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
+<script type='text/javascript'
+	src='../resources/js/shop/shopoperation.js' charset='utf-8'></script>
 <script>
 	//ga
 </script>
@@ -50,7 +52,7 @@
 				<a class="button button-link button-nav pull-left back"
 					href="/demos/form"> <span class="icon icon-left"></span> 返回
 				</a>
-				<h1 class="title">商铺信息</h1>
+				<h1 class="title">商铺注册</h1>
 			</header>
 			<div class="content">
 				<div class="list-block">
@@ -66,15 +68,15 @@
 								</div>
 							</div>
 						</li>
-						
+
 						<!--商铺分类  下拉框-->
 						<li>
 							<div class="item-content">
 								<div class="item-inner">
 									<div class="item-title label">商铺分类</div>
 									<div class="item-input">
-										<select id ="shop-category">
-											
+										<select id="shop-category">
+
 										</select>
 									</div>
 								</div>
@@ -86,8 +88,8 @@
 								<div class="item-inner">
 									<div class="item-title label">所属区域</div>
 									<div class="item-input">
-										<select id ="area">
-											
+										<select id="area">
+
 										</select>
 									</div>
 								</div>
@@ -137,8 +139,8 @@
 								</div>
 							</div>
 						</li>
-						
-						
+
+
 					</ul>
 				</div>
 				<div class="content-block">
@@ -147,7 +149,8 @@
 							<a href="#" class="button button-big button-fill button-danger">返回</a>
 						</div>
 						<div class="col-50">
-							<a href="#" class="button button-big button-fill button-success" id="submit">提交</a>
+							<a href="#" class="button button-big button-fill button-success"
+								id="submit">提交</a>
 						</div>
 					</div>
 				</div>
