@@ -24,25 +24,27 @@ public class ImageUtil {
     private static final SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
     private static final Random r = new Random(); 
 
-    /**
-     * 处理缩略图，并返回新生成图片的相对值路径
-     * @param shopImgInputStream
-     * @param targetAddr 相对目标路径
-     * @return
-     */
+ /**
+  * 处理缩略图，并返回新生成图片的相对值路径
+  * @param shopImgInputStream
+  * @param fileName
+  * @param targetAddr
+  * @return
+  */
     public static String generateThumbnail(InputStream  shopImgInputStream,String fileName ,String targetAddr) {
         String realFileName = getRandomFileName();
         String extension = getFileExtension(fileName);
         makeDirPath(targetAddr);
         String relativeAddr  =targetAddr +realFileName + extension;
+        System.out.println("relativeAddr::"+relativeAddr);
         File dest = new File(PathUtil.getImgBasePath() + relativeAddr);
+        System.out.println("dest::"+PathUtil.getImgBasePath() + relativeAddr);
         try {
             Thumbnails.of(shopImgInputStream).size(200, 200)
-            .watermark(Positions.BOTTOM_RIGHT,ImageIO.read(new File(basePath + "water.jpg")),0.25f)
+            .watermark(Positions.BOTTOM_RIGHT,ImageIO.read(new File(basePath + "/water.jpg")),0.25f)
             .outputQuality(0.8f).toFile(dest);
         }catch (IOException e) {
             e.printStackTrace();
-            throw new RuntimeException("加水印失败");
         }
         return relativeAddr;
     }
@@ -79,12 +81,6 @@ public class ImageUtil {
     private static String getFileExtension(String fileName) {
         String originalFileName = fileName;
         return originalFileName.substring(originalFileName.lastIndexOf("."));
-    }
-    public static void main(String[] args) throws IOException {
-
-        Thumbnails.of(new File("/Users/mac/Downloads/luoto.png")).size(200, 200)
-                .watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File(basePath + "/jingyu.png")), 0.25f)
-                .outputQuality(0.8f).toFile("/Users/mac/Downloads/luotonew.png");
     }
 }
 
