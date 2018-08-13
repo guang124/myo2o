@@ -31,9 +31,10 @@
 	src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
 <script type='text/javascript'
 	src='../resources/js/shop/shopoperation.js' charset='utf-8'></script>
-<script>
-	//ga
-</script>
+<script type='text/javascript' src='../resources/js/common/common.js'
+	charset='utf-8'>
+	</script>
+
 <script>
 	var _hmt = _hmt || [];
 	(function() {
@@ -112,7 +113,7 @@
 								<div class="item-inner">
 									<div class="item-title label">联系电话</div>
 									<div class="item-input">
-										<input type="text" id="phone" placeholder="联系电话">
+										<input type="text" id="shop-phone" placeholder="联系电话">
 									</div>
 								</div>
 							</div>
@@ -134,7 +135,20 @@
 								<div class="item-inner">
 									<div class="item-title label">店铺简介</div>
 									<div class="item-input">
-										<textarea id="desc"></textarea>
+										<textarea id="shop-desc" placeholder="店铺简介"></textarea>
+									</div>
+								</div>
+							</div>
+						</li>
+						<!--验证码     ka-->
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">验证码</div>
+									<input type="text" id="j_captcha" placeholder="验证码">
+									<div class="item-input">
+										<img id="captcha_img" alt="点击更换" title="点击更换"
+											onclick="changeVerifyCode(this)" src="../Kaptcha">
 									</div>
 								</div>
 							</div>

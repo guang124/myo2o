@@ -1,6 +1,7 @@
 package com.imooc.myo2o.service;
 
 import java.io.File;
+import java.io.InputStream;
 
 import com.imooc.myo2o.dto.ShopExecution;
 import com.imooc.myo2o.entity.Shop;
@@ -12,7 +13,7 @@ import com.imooc.myo2o.entity.Shop;
  */
 
 public interface ShopService {
-	ShopExecution addShop(Shop shop, File shopImg);
+	ShopExecution addShop(Shop shop, InputStream shopImgInputStream, String fileName);
 
 }
 

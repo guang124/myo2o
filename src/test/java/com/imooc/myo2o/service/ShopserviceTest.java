@@ -3,6 +3,8 @@ package com.imooc.myo2o.service;
 import static org.junit.Assert.assertEquals;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.Date;
 
 import org.junit.Test;
@@ -48,7 +50,8 @@ public class ShopserviceTest extends BaseTest{
 		shop.setEnableStatus(ShopStateEnum.CHECK.getState());
 		shop.setAdvice("审核中");
 		File shopImg = new File("D://laotie.jpg");
-		ShopExecution se = shopService.addShop(shop, shopImg);
+		InputStream is = new FileInputStream(shopImg);
+		ShopExecution se = shopService.addShop(shop, is, shopImg.getName());
 
 		assertEquals(ShopStateEnum.CHECK.getState(), se.getState());
 

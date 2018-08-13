@@ -13,6 +13,11 @@ import com.imooc.myo2o.entity.ShopCategory;
  */
 
 public interface ShopCategoryDao {
+	/**
+	 * 查询商品种类详情
+	 * @param shopCategoryCondition
+	 * @return
+	 */
 	List<ShopCategory> queryShopCategory(@Param("shopCategoryCondition")ShopCategory shopCategoryCondition);
 
 }
