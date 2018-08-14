@@ -49,9 +49,9 @@
 		a.area_id,
 		a.area_name,
 		sc.shop_category_id,
-		sc.shop_category_name,
+		sc.shop_category_name
 		FROM
-		tb_shop s,tb_area a,tb_shop_category sc,
+		tb_shop s,tb_area a,tb_shop_category sc
 		WHERE
 		s.area_id=a.area_id
 		AND
