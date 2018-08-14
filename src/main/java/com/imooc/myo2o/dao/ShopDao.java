@@ -1,5 +1,6 @@
 package com.imooc.myo2o.dao;
 
+
 import com.imooc.myo2o.entity.Shop;
 
 /* 
@@ -8,7 +9,13 @@ import com.imooc.myo2o.entity.Shop;
  * @date 2018年8月1日 下午7:20:49 
  */
 
+
 public interface ShopDao {
+	
+
+	//通过shop id查询店铺信息
+	Shop queryShopById(long shopId);
+
 	/**
 	 * 新增店铺
 	 * @param shop
