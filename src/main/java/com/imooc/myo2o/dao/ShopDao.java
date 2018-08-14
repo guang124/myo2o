@@ -12,8 +12,11 @@ import com.imooc.myo2o.entity.Shop;
 
 public interface ShopDao {
 	
-
-	//通过shop id查询店铺信息
+/**
+ * 通过shop id查询店铺信息
+ * @param shopId
+ * @return
+ */
 	Shop queryShopById(long shopId);
 
 	/**
