@@ -82,5 +82,27 @@ public class ImageUtil {
         String originalFileName = fileName;
         return originalFileName.substring(originalFileName.lastIndexOf("."));
     }
+    /**
+     * storePath可能是文件或目录的路径，
+     * 如果是文件路径则删除该文件，
+     * 如果是目录路径则删除该目录下的所有文件
+     * 
+     * @param storePath
+     */
+    public static void deleteFileOrPath(String storePath) {
+    	File fileOrPash = new File(PathUtil.getImgBasePath()+ storePath);
+    	if (fileOrPash.exists()) {
+    		if (fileOrPash.isDirectory()) {
+    			File file[]=fileOrPash.listFiles();
+    			for (int i = 0; i < file.length; i++) {
+					file[i].delete();
+				}
+				
+			}
+    		fileOrPash.delete();
+			
+		}
+		
+	}
 }
 
