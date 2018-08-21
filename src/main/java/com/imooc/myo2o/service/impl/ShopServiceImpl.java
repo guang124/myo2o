@@ -1,6 +1,5 @@
 package com.imooc.myo2o.service.impl;
 
-import java.io.File;
 import java.io.InputStream;
 import java.util.Date;
 
@@ -8,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
+import org.springframework.util.StringUtils;
 
 import com.imooc.myo2o.dao.ShopDao;
 import com.imooc.myo2o.dto.ShopExecution;
@@ -31,7 +31,7 @@ public class ShopServiceImpl implements ShopService {
 
 	@Override
 	@Transactional
-	public ShopExecution addShop(Shop shop, InputStream shopImgInputStream,String fileName) {
+	public ShopExecution addShop(Shop shop, InputStream shopImgInputStream,String fileName) throws ShopOperationException{
 		// 空值判断
 		if (ObjectUtils.isEmpty(shop)) {
 			return new ShopExecution(ShopStateEnum.NULL_SHOP);
@@ -73,6 +73,22 @@ public class ShopServiceImpl implements ShopService {
 		String shopImgAddr = ImageUtil.generateThumbnail(shopImgInputStream, fileName,dest);
 		shop.setShopImg(shopImgAddr);
 
+	}
+
+	@Override
+	public Shop queryShopById(long shopId) {
+		return shopDao.queryShopById(shopId);
+	}
+
+	@Override
+	public ShopExecution modifyShop(Shop shop, InputStream shopImgInputStream, String fileName)
+			throws ShopOperationException {
+		//1. 判断是否需要处理图片.
+		if (StringUtils.isEmpty(shop)&&StringUtils.isEmpty(shop.getShopId())) {
+			
+		}
+		//2. 更新图片信息 
+		return null;
 	}
 
 }
