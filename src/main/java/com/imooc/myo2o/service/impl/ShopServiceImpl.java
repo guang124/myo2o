@@ -3,11 +3,11 @@ package com.imooc.myo2o.service.impl;
 import java.io.InputStream;
 import java.util.Date;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
-import org.springframework.util.StringUtils;
 
 import com.imooc.myo2o.dao.ShopDao;
 import com.imooc.myo2o.dto.ShopExecution;
@@ -83,12 +83,36 @@ public class ShopServiceImpl implements ShopService {
 	@Override
 	public ShopExecution modifyShop(Shop shop, InputStream shopImgInputStream, String fileName)
 			throws ShopOperationException {
-		//1. 判断是否需要处理图片.
-		if (StringUtils.isEmpty(shop)&&StringUtils.isEmpty(shop.getShopId())) {
+		//判断传入shop是否为空
+		if (ObjectUtils.isEmpty(shop)&&shop.getShopId()==null) {
+			return new ShopExecution(ShopStateEnum.NULL_SHOP);
+		}else {
+			try {
+				//1. 判断是否需要处理图片.
+				if (shopImgInputStream!=null && StringUtils.isNotBlank(fileName)) {
+					Shop tempShop = shopDao.queryShopById(shop.getShopId());
+					if (tempShop.getShopImg()!=null) {//shop中已经有图片信息
+						//删除已有的图片
+						ImageUtil.deleteFileOrPath(tempShop.getShopImg());
+					}
+					//新增店铺图片
+					addShopImg(shop, shopImgInputStream, fileName);
+				}
+				//2. 更新店铺信息
+				shop.setLastEditTime(new Date());
+				int effectedNum=shopDao.updateShop(shop);
+				if (effectedNum<=0) {//更新失败
+					return new ShopExecution(ShopStateEnum.INNER_ERROR);
+				}else {//更新成功
+					shop=shopDao.queryShopById(shop.getShopId());
+					//返回新的shop信息
+					return new ShopExecution(ShopStateEnum.SUCCESS,shop);
+				}
+			} catch (Exception e) {
+				throw new ShopOperationException("modifyShop error:"+e.getMessage());
+			}
 			
 		}
-		//2. 更新图片信息 
-		return null;
-	}
+		 	}
 
 }

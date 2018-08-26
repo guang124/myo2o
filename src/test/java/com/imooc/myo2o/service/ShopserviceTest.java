@@ -1,12 +1,13 @@
 package com.imooc.myo2o.service;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Date;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -28,6 +29,19 @@ public class ShopserviceTest extends BaseTest{
 	@Autowired
 	private ShopService shopService;
 	
+	
+	@Test
+	public void modifyShop() throws Exception {
+		Shop shop = new Shop();
+		shop.setShopId(47l);
+		shop.setShopName("修改后的明星");
+		File shopImg = new File("d://laotie.jpg");
+		FileInputStream fileInputStream = new FileInputStream(shopImg);
+		ShopExecution shopExecution = shopService.modifyShop(shop, fileInputStream, "laotie.jpg");
+		System.out.println("图片新地址"+shopExecution.getShop().getShopImg());
+	}
+	
+	@Ignore
 	@Test
 	public void testAddShop() throws Exception {
 		Shop shop = new Shop();
