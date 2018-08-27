@@ -177,6 +177,7 @@ public class ShopManagementController {
 		private Map<String, Object> modifyShop(HttpServletRequest request) {
 			Map<String, Object> modelMap = new HashMap<String, Object>();
 			//验证码
+			
 			if (!CodeUtil.checkVerifyCode(request)) {
 				modelMap.put("success", false);
 				modelMap.put("errMsg", "验证码输入不正确");
